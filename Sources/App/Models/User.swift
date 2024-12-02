@@ -2,7 +2,7 @@ import Fluent
 import Vapor
 
 /// A single entry of a Todo list.
-final class User: Model {
+final class User: Model, @unchecked Sendable {
     static let schema = "users"
 
     /// The unique identifier for this `Todo`.

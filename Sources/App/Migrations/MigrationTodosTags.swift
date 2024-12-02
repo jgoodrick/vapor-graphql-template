@@ -1,8 +1,8 @@
 import Fluent
 
-struct MigrateTodosTags: Migration {
-    func prepare(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema(TodoTag.schema)
+struct MigrateTodosTags: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(TodoTag.schema)
             .id()
             .field("todo_id", .uuid, .required)
             .field("tag_id", .uuid, .required)
@@ -10,7 +10,7 @@ struct MigrateTodosTags: Migration {
             .create()
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema(TodoTag.schema).delete()
+    func revert(on database: Database) async throws {
+        try await database.schema(TodoTag.schema).delete()
     }
 }

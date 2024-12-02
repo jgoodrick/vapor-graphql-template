@@ -2,7 +2,7 @@ import Fluent
 import Vapor
 
 // Example of a pivot model.
-final class TodoTag: Model {
+final class TodoTag: Model, @unchecked Sendable {
     static let schema = "todo+tag"
 
     @ID(key: .id)

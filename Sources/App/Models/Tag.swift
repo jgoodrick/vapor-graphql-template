@@ -2,7 +2,7 @@ import Fluent
 import Vapor
 
 /// A single entry of a Tag list.
-final class Tag: Model {
+final class Tag: Model, @unchecked Sendable {
     static let schema = "tags"
 
     /// The unique identifier for this `Tag`.

@@ -5,7 +5,7 @@ import Vapor
 // Definition of our GraphQL schema.
 let todoSchema = try! Schema<TodoResolver, Request> {
     Scalar(UUID.self)
-    DateScalar(formatter: ISO8601DateFormatter())
+    Scalar(Date.self)
 
     // Todo type with it's fields
     Type(Todo.self) {
